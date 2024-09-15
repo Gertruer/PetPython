@@ -1,5 +1,6 @@
 from collections import Counter
 from abc import ABC, abstractmethod
+import itertools
 
 
 class Player(ABC):
@@ -76,9 +77,6 @@ class Game:
             elif move1 == 'cooperate' and move2 == 'cheat':
                 player1.score -= 1
                 player2.score += 3
-            elif move1 == 'cheat' and move2 == 'cheat':
-                player1.score += 0
-                player2.score += 0
 
         self.registry[type(player1).__name__] += player1.score
         self.registry[type(player2).__name__] += player2.score
@@ -88,29 +86,16 @@ class Game:
         print("Top 3 players:")
         for player, score in top_players:
             print(f"{player}: {score}")
+        return top_players
 
 def main():
     game = Game()
+    player_classes = [Cheater, Cooperator, Copycat, Grudger, Detective, Copykitten]  
 
-    game.play(Copycat(), Cheater())
-    game.play(Copycat(), Cooperator())
-    game.play(Copycat(), Grudger())
-    game.play(Copycat(), Detective())
-    game.play(Copycat(), Copykitten())
-
-    game.play(Grudger(), Cheater())
-    game.play(Grudger(), Cooperator())
-    game.play(Grudger(), Detective())
-    game.play(Grudger(), Copykitten())
-
-    game.play(Cheater(), Cooperator())
-    game.play(Cheater(), Detective())
-    game.play(Cheater(), Copykitten())
-
-    game.play(Cooperator(), Detective())
-    game.play(Cooperator(), Copykitten())
-
-    game.play(Detective(), Copykitten())
+    for player1_class, player2_class in itertools.combinations(player_classes, 2):
+        player1 = player1_class()
+        player2 = player2_class()
+        game.play(player1, player2)
 
     game.top3()
 
