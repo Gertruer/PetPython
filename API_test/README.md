@@ -5,12 +5,11 @@
 
 ## 2. Объем тестирования
 - Основной URL: https://api.thecatapi.com/v1
-- Ресурсы для тестирования: images, breeds, categories, favourites, votes
+- Ресурсы для тестирования: images, breeds, favourites, votes
 - HTTP методы: GET, POST, DELETE
 
 ## 3. Настройка
 - Регистрация на сайте для получения API ключа
-- Установка инструмента для отправки HTTP запросов (например, Postman)
 - Импорт JSON файла в Postman
 
 ## 4. Тестовые сценарии
