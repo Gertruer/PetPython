@@ -3,7 +3,7 @@
 		"name": "The Cat API Collection",
 		"description": "A collection of requests for testing The Cat API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_postman_id": "cea26c0a-7053-426c-948f-de9b355bbab2"
+		"_postman_id": "YOUR_ID"
 	},
 	"variable": [
 		{
