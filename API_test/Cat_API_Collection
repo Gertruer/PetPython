@@ -1,0 +1,415 @@
+{
+	"info": {
+		"name": "The Cat API Collection",
+		"description": "A collection of requests for testing The Cat API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_postman_id": "cea26c0a-7053-426c-948f-de9b355bbab2"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api.thecatapi.com/v1"
+		}
+	],
+	"item": [
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Get random cat image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/images/search",
+							"host": ["{{base_url}}"],
+							"path": ["images","search"]
+						}
+					}
+				},
+				{
+					"name": "Search images by breed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/images/search?breed_ids=sibe",
+							"host": ["{{base_url}}"],
+							"path": ["images","search"],
+							"query": [
+								{
+									"key": "breed_ids",
+									"value": "sibe"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Upload cat photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "API_test/cat01.jpg"
+								},
+								{
+									"key": "id",
+									"value": "TEST_IMAGE_ID",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/images/upload",
+							"host": ["{{base_url}}"],
+							"path": ["images","upload"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Breeds",
+			"item": [
+				{
+					"name": "Get breed list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/breeds",
+							"host": ["{{base_url}}"],
+							"path": ["breeds"]
+						}
+					}
+				},
+				{
+					"name": "Get bread name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/breeds/search?name=Munchkin",
+							"host": ["{{base_url}}"],
+							"path": ["breeds","search"],
+							"query": [
+								{
+									"key": "name",
+									"value": "Munchkin"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get specific breed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/breeds/beng",
+							"host": ["{{base_url}}"],
+							"path": ["breeds","beng"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Favourites",
+			"item": [
+				{
+					"name": "Add favorite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"image_id\": \"TEST_IMAGE_ID\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/favourites",
+							"host": ["{{base_url}}"],
+							"path": ["favourites"]
+						}
+					}
+				},
+				{
+					"name": "Get favorites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/favourites",
+							"host": ["{{base_url}}"],
+							"path": ["favourites"]
+						}
+					}
+				},
+				{
+					"name": "Delete favourites",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/favourites/TEST_FAVOURITES_ID",
+							"host": ["{{base_url}}"
+							],
+							"path": ["favourites","TEST_FAVOURITES_ID"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Votes",
+			"item": [
+				{
+					"name": "Vote for an image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"image_id\": \"TEST_IMAGE_ID\",\n    \"value\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/votes",
+							"host": ["{{base_url}}"],
+							"path": ["votes"]
+						}
+					}
+				},
+				{
+					"name": "Get history votes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/votes",
+							"host": ["{{base_url}}"],
+							"path": ["votes"]
+						}
+					}
+				},
+				{
+					"name": "Delete votes",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/votes/TEST_VOTES_ID",
+							"host": ["{{base_url}}"],
+							"path": ["votes","TEST_VOTES_ID"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Check error and performance test",
+			"item": [
+				{
+					"name": "Get invalid API key",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "INVALID_API_KEY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/favourites",
+							"host": ["{{base_url}}"],
+							"path": ["favourites"]
+						}
+					},
+					"response": {
+						"status": 401,
+						"body": {
+						"message": "AUTHENTICATION_ERROR - you need to send your API Key as the 'x-api-key' header"
+						}
+					}
+				},
+				{
+					"name": "Get non-existent breed",
+					"request": {
+					  "method": "GET",
+					  "header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+					  "url": {
+							"raw": "{{base_url}}/breeds/non-existent",
+							"host": ["{{base_url}}"],
+							"path": ["breeds", "non-existent"]
+					  }
+					},
+					"response": {
+						"status": 404,
+						"body": {
+							"message": "Breed not found"
+					 	}
+					}
+				},
+				{
+					"name": "Get random cat image (performance test)",
+					"request": {
+					  "method": "GET",
+					  "header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+					  "url": {
+							"raw": "{{base_url}}/images/search",
+							"host": ["{{base_url}}"],
+							"path": ["images", "search"]
+						}
+					},
+					"response": {
+						"responseTime": {
+							"min": 400,
+							"max": 1500
+						}
+					}
+				},
+				{
+					"name": "Get multiple random cat images (performance test)",
+					"request": {
+					  "method": "GET",
+					  "header": [
+							{
+								"key": "x-api-key",
+								"value": "live_nonFXhBk7C4scAX7kpWGBcHRrPM530Tqszl60sF9rQeqn9pEW9nXl08AMyZk1Xng",
+								"type": "text"
+							}
+						],
+					  "url": {
+							"raw": "{{base_url}}/images/search?limit=10",
+							"host": ["{{base_url}}"],
+							"path": ["images", "search"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": {
+					  "status": 200,
+					  "body": {
+							"type": "array",
+							"minItems": 10,
+							"maxItems": 10
+					  	},
+					  "responseTime": {
+							"min": 1000,
+							"max": 3000
+						}
+					}
+				}				  
+			]
+		}
+	]
+}
